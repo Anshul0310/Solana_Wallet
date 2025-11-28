@@ -4,7 +4,7 @@ import { Dashboard } from './components/Dashboard';
 import { AccountSwitcher } from './components/AccountSwitcher';
 import { SendTransaction } from './components/SendTransaction';
 import { type WalletAccount, createNewAccount } from './utils/solana';
-import { loadAccounts, addAccount } from './utils/storage';
+import { loadAccounts, addAccount, removeAccount } from './utils/storage';
 import { Button } from './components/Button';
 import { Wallet } from 'lucide-react';
 import { ToastProvider } from './context/ToastContext';
@@ -17,15 +17,31 @@ function App() {
     const loaded = loadAccounts();
     if (loaded.length > 0) {
       setAccounts(loaded);
-      setCurrentAccount(loaded[0]);
+      // Do not auto-login
+      // setCurrentAccount(loaded[0]);
     }
   }, []);
 
-  const handleCreateFirstAccount = () => {
-    const newAccount = createNewAccount('Main Account');
+  const handleCreateNewAccount = () => {
+    const name = accounts.length > 0 ? `Account ${accounts.length + 1}` : 'Main Account';
+    const newAccount = createNewAccount(name);
     const updated = addAccount(newAccount);
     setAccounts(updated);
     setCurrentAccount(newAccount);
+  };
+
+  const handleDeleteAccount = (accountToDelete: WalletAccount) => {
+    const updated = removeAccount(accountToDelete.publicKey);
+    setAccounts(updated);
+
+    if (currentAccount?.publicKey === accountToDelete.publicKey) {
+      // If deleted account was active, switch to another or logout
+      if (updated.length > 0) {
+        setCurrentAccount(updated[0]);
+      } else {
+        setCurrentAccount(null);
+      }
+    }
   };
 
   if (!currentAccount) {
@@ -49,9 +65,23 @@ function App() {
           <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>
             Manage your assets, NFTs, and swaps directly from your browser.
           </p>
-          <Button onClick={handleCreateFirstAccount}>
-            Create New Wallet
-          </Button>
+          {accounts.length > 0 ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+              <Button onClick={() => setCurrentAccount(accounts[0])}>
+                Open Wallet
+              </Button>
+              <div
+                style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', cursor: 'pointer' }}
+                onClick={handleCreateNewAccount}
+              >
+                or create new
+              </div>
+            </div>
+          ) : (
+            <Button onClick={handleCreateNewAccount}>
+              Create New Wallet
+            </Button>
+          )}
         </div>
       </Layout>
     );
@@ -63,7 +93,7 @@ function App() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
           <h1 style={{ fontSize: '1.2rem', margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
             <Wallet size={20} color="var(--accent-secondary)" />
-            GeoWallet
+            Solana Wallet
           </h1>
         </div>
 
@@ -72,6 +102,7 @@ function App() {
           currentAccount={currentAccount}
           onSelectAccount={setCurrentAccount}
           onAccountsUpdated={setAccounts}
+          onDeleteAccount={handleDeleteAccount}
         />
 
         <Dashboard account={currentAccount} />

@@ -17,3 +17,10 @@ export const addAccount = (account: WalletAccount) => {
     saveAccounts(accounts);
     return accounts;
 };
+
+export const removeAccount = (publicKey: string) => {
+    const accounts = loadAccounts();
+    const updated = accounts.filter(acc => acc.publicKey !== publicKey);
+    saveAccounts(updated);
+    return updated;
+};

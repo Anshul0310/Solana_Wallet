@@ -22,6 +22,21 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div className="card" ref={cardRef} style={{ opacity: 0 }}>
                 {children}
             </div>
+            <div style={{
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px',
+                color: 'var(--accent-secondary)',
+                fontFamily: "'Orbitron', sans-serif",
+                fontSize: '0.8rem',
+                letterSpacing: '1px',
+                opacity: 0.8,
+                pointerEvents: 'none',
+                zIndex: 1000,
+                textShadow: '0 0 10px rgba(6, 182, 212, 0.5)'
+            }}>
+                Designed and Developed by Anshul
+            </div>
         </div>
     );
 };
