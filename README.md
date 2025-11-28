@@ -51,7 +51,7 @@ A modern, geometric-styled web wallet for the Solana blockchain. Built with Reac
 
 ## ⚠️ Security Warning
 
-**This wallet is for educational and demonstration purposes.**
+
 
 - **Key Storage**: Private keys are stored in your browser's `localStorage`. This is **NOT** secure for holding large amounts of funds, as malicious scripts or malware could access this storage.
 - **Mainnet Use**: The wallet is connected to Mainnet Beta. Any transaction you make involves **REAL FUNDS**.
