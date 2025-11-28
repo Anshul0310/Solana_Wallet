@@ -12,6 +12,9 @@ A modern, geometric-styled web wallet for the Solana blockchain. Built with Reac
 - **Import Account**: Connect existing Solana accounts by importing Private Keys.
 - **Send Transactions**: Easily transfer SOL to any Solana address.
 - **Secure Reveal**: "Reveal Cards" with blur effects to safely view your Private Key or Seed Phrase.
+- **Account Management**:
+    - **Delete Accounts**: Remove unwanted accounts with a custom confirmation UI.
+    - **Unique Naming**: Automatically generates unique names (e.g., "Account 2") to avoid confusion.
 - **Smooth Animations**: Powered by `anime.js` for elastic entrances and satisfying number counting.
 - **Toast Notifications**: Non-intrusive, sleek notifications for all actions.
 
@@ -48,6 +51,18 @@ A modern, geometric-styled web wallet for the Solana blockchain. Built with Reac
     npm run dev
     ```
     Open `http://localhost:5173` in your browser.
+
+## 🌍 Deployment
+
+### Deploy to Vercel
+
+1.  Push your code to a GitHub repository.
+2.  Go to [Vercel](https://vercel.com) and sign up/login.
+3.  Click **Add New...** > **Project**.
+4.  Import your repository. Vercel will automatically detect Vite and configure the build settings.
+5.  Click **Deploy**.
+
+**Note**: Since this is a client-side app using `localStorage`, it works perfectly on static hosting like Vercel. However, please read the **Security Warning** below carefully before deploying.
 
 ## ⚠️ Security Warning
 
