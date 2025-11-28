@@ -27,42 +27,6 @@ A modern, geometric-styled web wallet for the Solana blockchain. Built with Reac
 - **Animations**: `anime.js`
 - **Icons**: `lucide-react`
 
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js (v16+)
-- npm or yarn
-
-### Installation
-
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/yourusername/solana-web-wallet.git
-    cd solana-web-wallet
-    ```
-
-2.  **Install dependencies**
-    ```bash
-    npm install
-    ```
-
-3.  **Start the development server**
-    ```bash
-    npm run dev
-    ```
-    Open `http://localhost:5173` in your browser.
-
-## 🌍 Deployment
-
-### Deploy to Vercel
-
-1.  Push your code to a GitHub repository.
-2.  Go to [Vercel](https://vercel.com) and sign up/login.
-3.  Click **Add New...** > **Project**.
-4.  Import your repository. Vercel will automatically detect Vite and configure the build settings.
-5.  Click **Deploy**.
-
-**Note**: Since this is a client-side app using `localStorage`, it works perfectly on static hosting like Vercel. However, please read the **Security Warning** below carefully before deploying.
 
 ## ⚠️ Security Warning
 
