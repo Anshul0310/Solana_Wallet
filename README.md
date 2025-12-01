@@ -36,6 +36,3 @@ A modern, geometric-styled web wallet for the Solana blockchain. Built with Reac
 - **Mainnet Use**: The wallet is connected to Mainnet Beta. Any transaction you make involves **REAL FUNDS**.
 - **Recommendation**: Use this wallet for small amounts or testing only. Do not use it as your primary savings wallet.
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
